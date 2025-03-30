@@ -1,15 +1,24 @@
-const mongoose= require("mongoose")
+const mongoose=require('mongoose')
 
-const schema = mongoose.Schema({
-    "email":String,
-    "password":String,
-    "isactive":Boolean,
-    "first_name":String,
-    "last_name":String,
-    "phone_number":String,
-},{
+const schema= mongoose.Schema({
+    "name":{type:String,required:true},
+    "isactive":{Boolean,default:true},
+    "email":{type:String,required:true},
+    "first_name":{type:String,required:true},
+    "second_name":{type:String,required:true},
+    "phone_number":{type:String,required:true},
+    
+},{ versionKey:false,
     timestamps:{
-        createdAt:"created_at",
-        updatedAt:"updated_at"
-    }
-})
+    updatedAt:"updated_at",
+    createdAt:"created_at"
+}
+}
+)
+
+class Users extends mongoose.Model {
+
+}
+
+schema.loadClass(Users)
+module.exports=mongoose.model("users",schema)

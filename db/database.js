@@ -1,4 +1,4 @@
-const { options } = require("../routes");
+const {options} = require('../config')
 const mongoose = require('mongoose');
 let instance = null;
 class Database{
@@ -10,8 +10,10 @@ constructor(){
     
 }
 async connect (options){
+        console.log("connecting to db")
         let db  = await mongoose.connect(options.CONNECTION_STRING)
         this.mongoConnection = db;
+        console.log("connected to db")
     }
 }
 
